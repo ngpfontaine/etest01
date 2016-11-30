@@ -4,7 +4,7 @@
 
 // Launch local app (Linux app & path)
 var child = require('child_process').execFile
-var executablePath = "/usr/bin/google-chrome"
+var executablePath = "/usr/bin/chromium"
 var parameters = ["--incognito"];
 child(executablePath, parameters, function(err, data) {
      console.log(err)
