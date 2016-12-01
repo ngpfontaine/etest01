@@ -3,11 +3,18 @@
 // All of the Node.js APIs are available in this process.
 
 // Launch local app (Linux app & path)
-var child = require('child_process').execFile
-var executablePath = "/usr/bin/chromium"
+const procChrome = require('child_process')
+var child = procChrome.exec
+// Local path per operating system
+var executablePath = "/usr/bin/google-chrome"
 var parameters = ["--incognito"];
-child(executablePath, parameters, function(err, data) {
+var childProcess = child(executablePath, parameters, function(err, data) {
      console.log(err)
      console.log(data.toString())
 })
+// On exit
+childProcess.on('exit', function (code) {
+	   console.log('Child process exited with exit code '+code)
+})
 
+childProcess.send(console.log('foo'));
